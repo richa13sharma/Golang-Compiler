@@ -1,4 +1,4 @@
-package Compiler
+Package Compiler
 
 import "fmt"
 
@@ -10,11 +10,15 @@ a:=30
 b:=50
 for(i:=0;i<4;i++)
 {
-b=b+a
+b:=b+a
+for(j:=0;j<4;j++)
+{
+l:=a+b
+}
 }
 if(a>b)
 {
-a=a+b
+a:=a+b
 }
 }
 

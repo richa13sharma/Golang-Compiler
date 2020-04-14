@@ -64,10 +64,48 @@ rm lex.yy.c
 
 echo "##########################################################################################################################"
 
+cd AST
+
+lex AST.l
+
+yacc -d AST.y 
+
+gcc -g y.tab.c lex.yy.c -ll -o AST
+
+./AST
+
+cat AST.txt
+
+rm AST.txt y.tab.c lex.yy.c AST y.tab.h
+
+cd ..
+
+echo "##########################################################################################################################"
+
 g++ generators/code_generator.cpp
 
 ./a.out
 
-rm ./a.out
+rm a.out
 
-rm gen_code.txt
+# ICG- 
+
+# cd ICG_CODE_OPT
+
+yacc -d ICG_CODE_OPT/ICG.y
+lex ICG_CODE_OPT/ICG.l
+gcc -g y.tab.c lex.yy.c -ll -o ICG
+./ICG
+
+cat icg.txt
+
+# CODE_OPT
+
+yacc -d ICG_CODE_OPT/opt.y
+lex ICG_CODE_OPT/opt.l
+gcc -g y.tab.c lex.yy.c -ll -o OPT
+./OPT
+
+cat Optimize.txt
+
+rm ICG y.tab.c y.tab.h OPT lex.yy.c icg.txt Optimize.txt
